@@ -1,19 +1,26 @@
 import {
   AccountCircleOutlined,
   AddBoxOutlined,
+  Archive,
   BookmarkAddOutlined,
   DarkModeOutlined,
   DensityMediumOutlined,
   ExploreOutlined,
+  Favorite,
   FavoriteBorder,
   Home,
+  LocationCityOutlined,
   MovieCreationOutlined,
   PrivacyTipOutlined,
+  Restore,
   Search,
   Send,
   Settings,
+  Work,
 } from "@mui/icons-material";
 import {
+  BottomNavigation,
+  BottomNavigationAction,
   Button,
   Divider,
   IconButton,
@@ -36,12 +43,13 @@ export function LeftBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <>
       <Box
         p={3}
         flex={1}
-        borderRight="1px solid #00000018"
+        borderRight="1px solid lightgrey"
         display="flex"
         flexDirection="column"
         sx={{ display: { xs: "none", lg: "block" } }}
@@ -181,7 +189,7 @@ export function LeftBar() {
       >
         <svg
           aria-label="Instagram"
-          class="_ab6-"
+          className="_ab6-"
           color="#262626"
           fill="#262626"
           height="24"
@@ -315,6 +323,22 @@ export function LeftBar() {
           </Menu>
         </Box>
       </Box>
+      <Paper
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+        elevation={3}
+      >
+        <BottomNavigation
+          showLabels
+          sx={{ display: { xs: "flex", md: "none" } }}
+        >
+          <BottomNavigationAction icon={<Home />} />
+          <BottomNavigationAction icon={<ExploreOutlined />} />
+          <BottomNavigationAction icon={<MovieCreationOutlined />} />
+          <BottomNavigationAction icon={<AddBoxOutlined />} />
+          <BottomNavigationAction icon={<Send />} />
+          <BottomNavigationAction icon={<AccountCircleOutlined />} />
+        </BottomNavigation>
+      </Paper>
     </>
   );
 }

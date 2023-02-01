@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Index } from "./pages/indes";
 import { ThemeProvider } from "styled-components";
