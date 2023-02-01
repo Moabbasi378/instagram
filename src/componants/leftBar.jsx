@@ -180,13 +180,18 @@ export function LeftBar() {
             </Menu>
           </Box>
         </Box>
+      </Box>
+      <Box
+        borderRight="1px solid lightgray"
+        width="10%"
+        sx={{ display: { xs: "none", md: "block", lg: "none " } }}
+      >
         <Box
+          position="fixed"
           p={2}
           flex={0.3}
-          borderRight="1px solid #00000018"
           display="flex"
           flexDirection="column"
-          sx={{ display: { xs: "none", md: "block", lg: "none " } }}
         >
           <svg
             aria-label="Instagram"
