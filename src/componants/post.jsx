@@ -16,6 +16,28 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import logo from "../images/post13.jpg";
 import profile from "../images/profile4.jpg";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
+import {
+  ChatBubble,
+  ChatBubbleOutline,
+  CheckBox,
+  Favorite,
+  FavoriteBorder,
+  MoreVertOutlined,
+  Telegram,
+} from "@mui/icons-material";
+import {
+  Checkbox,
+  Divider,
+  List,
+  ListItem,
+  Menu,
+  MenuItem,
+  Modal,
+} from "@mui/material";
+import { Box, style } from "@mui/system";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,6 +51,16 @@ const ExpandMore = styled((props) => {
 }));
 
 export function Post() {
+  const [open2, setOpen2] = React.useState(false);
+  const handleOpen = () => setOpen2(true);
+  const handleClose2 = () => setOpen2(false);
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -36,7 +68,7 @@ export function Post() {
   };
 
   return (
-    <Card sx={{ maxWidth: "90%", marginBottom: "10px" }}>
+    <Card sx={{ maxWidth: "90%", marginBottom: "30px" }}>
       <CardHeader
         avatar={
           <Avatar src={profile} sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -44,8 +76,141 @@ export function Post() {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+          <IconButton aria-label="settings" onClick={handleToggle}>
+            <MoreVertOutlined />
+            <Backdrop
+              sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={open}
+              onClick={handleClose}
+            >
+              <List
+                sx={{
+                  backgroundColor: "white",
+                  borderRadius: "15px",
+                  color: "black",
+                  width: "300px",
+                  alignItems: "center",
+                  margin: "4px",
+                }}
+              >
+                <ListItem
+                  sx={{
+                    color: "red",
+                    display: "flex",
+                    fontWeight: "600",
+                    flexDirection: "column",
+                    margin: "4px",
+                    fontSize: "0.875rem",
+                  }}
+                >
+                  Report
+                </ListItem>
+                <Divider />
+                <ListItem
+                  sx={{
+                    color: "red",
+                    display: "flex",
+                    fontWeight: "600",
+                    flexDirection: "column",
+                    fontSize: "0.875rem",
+                    margin: "4px",
+                  }}
+                >
+                  Unfollow
+                </ListItem>
+                <Divider />
+                <ListItem
+                  sx={{
+                    color: "blacl",
+                    display: "flex",
+                    fontWeight: "400",
+                    flexDirection: "column",
+                    fontSize: "0.875rem",
+                    margin: "4px",
+                  }}
+                >
+                  Add to favorites
+                </ListItem>
+                <Divider />
+                <ListItem
+                  sx={{
+                    color: "black",
+                    display: "flex",
+                    fontWeight: "400",
+                    flexDirection: "column",
+                    margin: "4px",
+                    fontSize: "0.875rem",
+                  }}
+                >
+                  Go to post
+                </ListItem>
+                <Divider />
+                <ListItem
+                  sx={{
+                    color: "black",
+                    fontSize: "0.875rem",
+                    display: "flex",
+                    fontWeight: "400",
+                    flexDirection: "column",
+                    margin: "4px",
+                  }}
+                >
+                  Share to...
+                </ListItem>
+                <Divider />
+                <ListItem
+                  sx={{
+                    color: "black",
+                    display: "flex",
+                    fontWeight: "400",
+                    fontSize: "0.875rem",
+                    flexDirection: "column",
+                    margin: "4px",
+                  }}
+                >
+                  Copy link
+                </ListItem>
+                <Divider />
+                <ListItem
+                  sx={{
+                    color: "black",
+                    display: "flex",
+                    fontWeight: "400",
+                    fontSize: "0.875rem",
+                    flexDirection: "column",
+                    margin: "4px",
+                  }}
+                >
+                  Embed
+                </ListItem>
+                <Divider />
+                <ListItem
+                  sx={{
+                    color: "black",
+                    display: "flex",
+                    fontSize: "0.875rem",
+                    fontWeight: "400",
+                    flexDirection: "column",
+                    margin: "4px",
+                  }}
+                >
+                  About this account
+                </ListItem>
+                <Divider />
+                <ListItem
+                  sx={{
+                    color: "black",
+                    display: "flex",
+                    fontWeight: "400",
+                    fontSize: "0.875rem",
+                    flexDirection: "column",
+                    margin: "4px",
+                  }}
+                >
+                  Cancel
+                </ListItem>
+              </List>
+            </Backdrop>
           </IconButton>
         }
         title="Shrimp and Chorizo Paella"
@@ -61,11 +226,28 @@ export function Post() {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <Checkbox
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite sx={{ color: "red" }} />}
+          />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton aria-label="comment">
+          <ChatBubbleOutline />
         </IconButton>
+        <IconButton aria-label="share" onClick={handleOpen}>
+          <Telegram />
+          <Backdrop
+            open={open2}
+            onClose={handleClose2}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Card>
+              <Box>hi</Box>
+            </Card>
+          </Backdrop>
+        </IconButton>
+
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
